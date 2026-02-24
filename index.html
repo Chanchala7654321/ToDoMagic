@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Task Tracker</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <main class="main">
+        <header class="title-section">
+            <h1 class="title-text">Daily Task Tracker</h1>
+        </header>
+        <section class="task-section">
+            <section class="task-add">
+                <input type="text" placeholder="Add a new task" maxlength="50">
+                <button type="button" id="add-task">Add</button>
+                <button type="reset" id="clear-task">Clear</button>
+            </section>
+
+            <section class="task-show">
+                <h2 class="list-title">Task List</h2>
+                <ul id="list-container"></ul>
+            </section>
+            <section class="task-data">
+                <button>All <span id="allCount">0</span></button>
+                <button>Completed <span id="completedCount">0</span></button>
+                <button>Pending <span id="pendingCount">0</span></button>
+            </section>
+
+        </section>
+    </main>
+
+    <script src="./script.js"></script>
+</body>
+
+</html>
+
+
