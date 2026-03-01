@@ -5,6 +5,7 @@ let addBtn = document.getElementById("add-task");
 let clearBtn = document.getElementById("clear-task");
 
 let taskList = document.getElementById("list-container");
+let btnGroup = document.getElementById("btnGroup")
 
 let allCountTask = document.getElementById("allCount");
 let completedCountTask = document.getElementById("completedCount");
@@ -13,66 +14,52 @@ let pendingCountTask = document.getElementById("pendingCount");
 
 
 
+let allTasks = JSON.parse(localStorage.getItem("myTask")) || [];
+
+function saveTasks() {
+    localStorage.setItem("myTask", JSON.stringify(allTasks));
+}
 
 addBtn.addEventListener("click", function () {
-    let inputVal = input.value;
-    console.log(inputVal.length);
-    if (inputVal.length > 5) {
-        let li = document.createElement("li");  /* Create list dynamically using JavaScript. */
-        let editBtn = document.createElement("button"); /* Create button dynamically using JavaScript. */
-        editBtn.innerText = "Edit";
-        let deletBtn = document.createElement("button"); /* Create button dynamically using JavaScript. */
-        deletBtn.innerText = "Delete";
+    let inputVal = input.value.trim();
 
-
-        li.innerText = inputVal;
-
-        taskList.appendChild(li);
-        li.appendChild(editBtn)
-        li.appendChild(deletBtn)
-
-        input.value = "";
+    if (inputVal.length === 0) {
+        alert("Add your task here....");
+        return;
     }
 
-    else if (inputVal.length === 0) {
-        alert("Add your task here....")
-    }
-    else {
-        alert("Describe more!")
+    if (inputVal.length <= 5) {
+        alert("Describe more!");
+        return;
     }
 
+    // Create task object
+    let taskObj = {
+        text: inputVal,
+        completed: false
+    };
 
-})
+    allTasks.push(taskObj);
+    saveTasks();
 
+    // Create list item
+    let liItem = document.createElement("li");
 
+    liItem.innerHTML = `
+        <div class="taskItem">
+            <div class="task">
+                <input type="checkbox" class="checkbox" />
+                <p>${inputVal}</p>
+            </div>
+            <div class="icons">
+                <i class="fa-regular fa-pen-to-square"></i>
+                <i class="fa-regular fa-trash-can"></i>
+            </div>
+        </div>
+    `;
 
-clearBtn.addEventListener("click", function () {
+    taskList.appendChild(liItem);
+
     input.value = "";
-    // showToast("Input cleared!");
 });
-
-
-
-
-
-
-// function showToast(message) {
-//     let toast = document.getElementById("toast");
-
-//     // Create toast div if it doesn't exist
-//     if (!toast) {
-//         toast = document.createElement("div");
-//         toast.id = "toast";
-//         toast.className = "toast";
-//         document.body.appendChild(toast);
-//     }
-
-//     toast.innerText = message;
-//     toast.classList.add("show");
-
-//     setTimeout(() => {
-//         toast.classList.remove("show");
-//     }, 3000);
-// }
-
 
