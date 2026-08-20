@@ -4,45 +4,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Daily Task Tracker</title>
+    <title>Todo List</title>
     <link rel="stylesheet" href="./style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
-        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body>
-
-    <!-- <div id="toast" class="toast"></div> -->
-
-    <main class="main">
-        <header class="title-section">
-            <h1 class="title-text">Daily Task Tracker</h1>
-        </header>
-        <!-- <section class="task-section"> -->
-        <section class="task-add">
-            <input type="text" placeholder="Add a new task" maxlength="50" id="task-input">
-            <button type="button" id="add-task" class="btn">Add</button>
-            <button type="reset" id="clear-task" class="btn">Clear</button>
-        </section>
-
-        <section class="task-show">
-            <h2 class="list-title">Task List</h2>
-            <ul id="list-container"></ul>
-        </section>
-        <section class="task-data">
-            <button class="btn">All <span id="allCount">0</span></button>
-            <button class="btn">Completed <span id="completedCount">0</span></button>
-            <button class="btn">Pending <span id="pendingCount">0</span></button>
-        </section>
-
-        <!-- </section> -->
-
-
-        .
-    </main>
-
-    <script src="./script.js"></script>
+    <div class="container">
+        <h1>TODO LIST</h1>
+        <div class="controls"> <button id="add-task-btn">Add Task</button> <select id="filter-todo">
+                <option value="all">All</option>
+                <option value="completed">Completed</option>
+                <option value="incomplete">Incomplete</option>
+            </select> </div>
+        <div id="todo-modal" class="modal" style="display:none;">
+            <div class="modal-content">
+                <h3 id="modal-title">Add TODO</h3> <label for="todo-input">Title</label> <input type="text"
+                    id="todo-input" placeholder="Enter task title..."> <label for="todo-status">Status</label> <select
+                    id="todo-status">
+                    <option value="incomplete">Incomplete</option>
+                    <option value="completed">Completed</option>
+                </select>
+                <div class="modal-buttons"> <button id="submit-todo">Add Task</button> <button id="cancel-todo"
+                        style="background: #cccdde; color: #585858;">Cancel</button> </div>
+            </div>
+        </div>
+        <div class="todo-content">
+            <p id="empty-message">No Todos</p>
+            <ul id="todo-list"></ul>
+        </div>
+    </div>
+    <script src="script.js"></script>
 </body>
 
 </html>
